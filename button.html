@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nubie User Profile</title>
+    <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="card-header bg-success text-white">
+            Add User
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="usernamesignup">Username</label>
+                    <input type="text" class="form-control" id="usernamesignup">
+                </div>
+                <div class="form-group">
+                    <label for="passwordsignup">Password</label>
+                    <input type="text" class="form-control" id="passwordsignup">
+                </div>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age">
+                </div>
+                <div class="form-group">
+                    <label for="interests">Interests (separate by commas)</label>
+                    <input type="text" class="form-control" id="interests">
+                </div>
+                <div class="form-group">
+                    <label for="favoritefoods">Favorite Foods (separate by commas)</label>
+                    <input type="text" class="form-control" id="favoritefoods">
+                </div>
+                <div class="form-group">
+                    <label for="countryoforigin">Country Of Origin</label>
+                    <input type="text" class="form-control" id="countryoforigin">
+                </div>
+                <button type="submit" id="signup" class="btn btn-success">signup</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!--     TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#config-web-app
+ -->
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCn40RKSh5xWdw0YMobVp3qn9fyw8Nk1BY",
+            authDomain: "nubie-a6352.firebaseapp.com",
+            databaseURL: "https://nubie-a6352.firebaseio.com",
+            projectId: "nubie-a6352",
+            storageBucket: "nubie-a6352.appspot.com",
+            messagingSenderId: "847836231540",
+            appId: "1:847836231540:web:71bc8c9e157b8be9"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
+        $(document).ready(function () {
+            // access firebase
+            $("#signup").on("click", function (e) {
+                e.preventDefault();
+                var usernamesignup = $("#usernamesignup").val().trim();
+                var passwordsignup = $("#passwordsignup").val().trim();
+                var firstname = $("#firstname").val().trim();
+                var lastname = $("#lastname").val().trim();
+                var age = $("#age").val().trim();
+                var interests = $("#interests").val().trim();
+                var favoritefoods = $("#favoritefoods").val().trim();
+                var countryoforigin = $("#countryoforigin").val().trim();
+                database.ref().push({
+                    usernamesignup: usernamesignup,
+                    passwordsignup: passwordsignup,
+                    firstname: firstname,
+                    lastname: lastname,
+                    age: age,
+                    interests: interests,
+                    favoritefoods: favoritefoods,
+                    countryoforigin: countryoforigin
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
